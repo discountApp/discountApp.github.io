@@ -60,7 +60,7 @@ window.onload = function(){
                 console.log(xhr.response);
                 generateResultTable(JSON.parse(xhr.response));
             } else if (xhr.readyState === 4 && xhr.status !== 200) {
-                window.location.href="http://www.google.pl";
+                window.location.href="http://rabatapp.herokuapp.com/error";
             };;
 
         };
