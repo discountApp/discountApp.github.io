@@ -1,3 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"> </meta>
+    <title>Products</title>
+</head>
+<style>
+    .container
+    {
+        width: 1280px;
+        min-height: 0px;
+        margin-left: auto;
+        margin-right:auto;
+        background-color: #c2f0f0;
+        position: absolute; top: 50px; right: 15px; bottom: auto; left: 15px;
+        font-family: calibri;
+    }
+    .page
+    {
+        width: 1000px;
+        min-height: 0px;
+        margin-left: auto;
+        margin-right:auto;
+        background-color: #adebeb;
+		border: 3px solid #70dbdb;
+    }
+    .confirmation
+    {
+        background-color: #adebeb;
+        text-align: center;
+        position: relative;
+		bottom:0px;
+        border: 3px solid #70dbdb;
+    }
+	
+	.buttons
+	{
+		 background-color: #adebeb;
+		 text-align: center;
+	}
+</style>
+<body>
+
+<div class="container">
+   
+	<div class="page">
+       <form>
+        <div class="table">
+            <table align="center" id="productsTable">
+                <tr>
+                    <th> product name </th>
+                    <th> price </th>
+                </tr>
+                <body th:object="${products}">
+                <tr th:name="product" th:object="${product}">
+                    <td> <input type="text" name="name"></input></td>
+                    <td> <input type="number" min="1" name="price"></input></td>
+                </tr>
+                </body>
+            </table>
+        </div>
+		
+       
+        <div class="confirmation">
+            <input type="number" id="rabat" min="0" placeholder="Rabat"></input>
+			  <input type="reset" id="resetBtn" value="Reset" />
+        </div>
+		</form>
+		<div class ="buttons">
+		<button id="sendBtn">SEND</button>
+		<button id="addNewItemBtn">Add new product</button>
+		</div>
+        <hr>
+	
+        <div id="resultsContainer" style="margin-top:20px;">
+            
+        </div>
+</div>
+
+</div>
+<script>
 window.onload = function(){
     let productTable = document.getElementById("productsTable");
     let resultsTable = document.getElementById("resultsContainer");
@@ -77,4 +158,8 @@ window.onload = function(){
          let data = createJson();
          sendPostRequest(URL, data);
     });
+    
 }
+</script>
+</body>
+</html>
